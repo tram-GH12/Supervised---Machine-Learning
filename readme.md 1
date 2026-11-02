@@ -1,0 +1,80 @@
+#Finding Donors: Income Classification Using Machine Learning
+
+### Project Overview
+
+This project explores how supervised machine learning can help CharityML, a fictional nonprofit organization, identify potential donors by predicting whether an individual's annual income exceeds $50,000.
+
+Using U.S. Census demographic and socioeconomic data, I developed and evaluated classification models to identify patterns associated with higher income levels. The objective was to improve the efficiency of potential donor identification while minimizing false-positive predictions.
+
+## Business Problem
+
+Nonprofit organizations often operate with limited outreach resources. Identifying individuals who are more likely to meet a target income threshold can help prioritize outreach efforts.
+
+This project addresses the following question:
+
+**Can machine learning accurately identify individuals earning more than $50,000 using demographic and socioeconomic characteristics?**
+
+Income classification serves as a proxy for identifying potential donors; it does not directly predict whether someone will donate.
+
+## Tools and Technologies
+
+- **Python:** Data processing and machine learning
+- **Pandas and NumPy:** Data manipulation and analysis
+- **Scikit-learn:** Classification, preprocessing, model evaluation, and hyperparameter tuning
+- **Matplotlib:** Data visualization
+- **Jupyter Notebook:** Analysis and documentation
+
+## Methodology
+
+The project follows a supervised machine learning workflow:
+
+1. **Exploratory Data Analysis:** Examined income distribution, demographic features, and skewed numerical variables.
+2. **Data Preprocessing:** Applied logarithmic transformations, feature scaling, and one-hot encoding.
+3. **Model Development:** Trained and compared Logistic Regression, Random Forest, and Gradient Boosting classifiers.
+4. **Model Evaluation:** Compared accuracy, F0.5 score, training time, and prediction time across different training sample sizes.
+5. **Hyperparameter Optimization:** Used grid search with cross-validation to optimize the selected Gradient Boosting model.
+6. **Feature Importance:** Examined the most influential predictors and evaluated performance using a reduced feature set.
+
+## Model Performance
+
+Gradient Boosting was selected based on its predictive performance and suitability for the dataset.
+
+| Model | Accuracy | F0.5 Score |
+|---|---:|---:|
+| Naive Predictor | 24.78% | 0.2917 |
+| Untuned Gradient Boosting | 86.30% | 0.7395 |
+| **Optimized Gradient Boosting** | **86.58%** | **0.7435** |
+| Gradient Boosting — Top 5 Features | 85.88% | 0.7263 |
+
+The optimized Gradient Boosting model achieved the highest performance among these evaluated configurations, with **86.58% accuracy and an F0.5 score of 0.7435**.
+
+The F0.5 metric was prioritized because it places greater emphasis on precision, helping reduce false positives when identifying potential donors.
+
+## Key Findings
+
+- Gradient Boosting was selected over Logistic Regression and Random Forest based on testing F0.5 performance.
+- Hyperparameter tuning improved predictive performance, although the gains were modest.
+- Capital gain, capital loss, marital status, age, and education level emerged as the five most important individual features in the model.
+- Using only the five most important features produced relatively competitive results, with accuracy declining by 0.70 percentage points.
+- The model substantially outperformed the naive baseline, demonstrating the value of supervised learning for income classification.
+
+## Limitations and Future Improvements
+
+Although the model performed well on the testing dataset, several limitations remain:
+
+- Income level does not necessarily indicate willingness or likelihood to donate.
+- Demographic characteristics may reflect historical socioeconomic inequalities and should be evaluated for potential fairness concerns.
+- Feature importance identifies predictive relationships, not causal effects.
+- Further validation on independent data would help assess model reliability and generalizability.
+
+Future improvements could include additional cross-validation, fairness analysis, probability calibration, and incorporating actual donor behavior data when available.
+
+## Project Files
+
+- `finding_donors.ipynb` — Complete analysis, model development, visualizations, and evaluation.
+- `census.csv` — Dataset used for the analysis, if redistribution is permitted.
+- `visuals.py` — Supporting visualization functions, if included and redistribution is permitted.
+
+## Project Attribution
+
+This project was completed as part of the Udacity Data Scientist learning program. The original project framework and dataset were provided through Udacity. The analysis, model evaluation, interpretations, and documented findings reflect my work within that educational framework.
